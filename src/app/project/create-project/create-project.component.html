@@ -1,0 +1,53 @@
+<div>
+    <form class="form" [formGroup]="createProject" validate (ngSubmit)="onFormAdd(createProject.value)">
+        <header class="form__header">
+            <h2 class="form__header__title">Crear un nuevo Proyecto</h2>
+            <button class="form__header__close-button" mat-raised-button color="warn" (click)="close()">
+                <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
+            </button>
+        </header>
+        <section class="form__fields">
+
+            <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name">
+                <mat-error>
+                    El nombre es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+                <mat-label>Seleccione los miembros del proyecto</mat-label>
+                <mat-select #selectUser (selectionChange)="addUser($event.value); selectUser.value = ''">
+                    <mat-option value="" disabled selected>Seleccione un usuario</mat-option>
+                    <mat-option *ngFor="let user of users" [value]="user">
+                        {{ user }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="infoUserOwn">
+                <h3>Proyecto creado por:</h3>
+                <ul>
+                    <li>
+                        {{ createdBydUser }}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="infoUsers" *ngIf="selectedUsers.length">
+                <h3>Usuarios seleccionados:</h3>
+                <ul>
+                    <li *ngFor="let user of selectedUsers">
+                        {{ user }}
+                        <button class="form__fields__button__delete" mat-raised-button color="warn" type="button"
+                            (click)="removeUser(user)">Eliminar</button>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="form__fields__button" mat-raised-button color="primary"
+                [disabled]="!createProject.valid">Crear Proyecto</button>
+        </section>
+    </form>
+</div>

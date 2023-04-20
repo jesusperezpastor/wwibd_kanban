@@ -1,0 +1,35 @@
+<div class="list" id="{{ list.id }}" cdkDropList [cdkDropListData]="list.tasks"
+	(cdkDropListDropped)="drop($event)">
+
+	<div class="changeListDiv">
+		<button btn-sm class="buttonMoveListLeft" matTooltip="Mover Colummna a la Izquierda"
+			matTooltipClass="custom-tooltip-blue" matTooltipPosition="above" mat-icon-button
+			(click)="moveListLeft(list)">
+			<mat-icon aria-label="icon-button to edit">arrow_back_ios</mat-icon>
+		</button>
+		<button btn-sm class="buttonMoveListRight" matTooltip="Mover Colummna a la Derecha"
+			matTooltipClass="custom-tooltip-blue" matTooltipPosition="above" mat-icon-button
+			(click)="moveListRigth(list)">
+			<mat-icon aria-label="icon-button to edit">arrow_forward_ios</mat-icon>
+		</button>
+		<button class="buttonDeleteList" matTooltip="Borrar Columna" matTooltipClass="custom-tooltip-blue"
+			matTooltipPosition="above" mat-icon-button (click)="handleDeleteList(list)">
+			<mat-icon class="list_iconDelete" aria-label="icon-button to edit">delete_forever</mat-icon>
+		</button>
+	</div>
+
+	<h3 class="titleDiv">
+		<div class="titleDivContainer">
+			<strong>{{ list.name }}</strong>
+			<button btn-sm class="buttonEditList" matTooltip="Editar Nombre" matTooltipClass="custom-tooltip-blue"
+				matTooltipPosition="above" mat-icon-button (click)="handleEditList(list)">
+				<mat-icon class="list__iconEdit" aria-label="icon-button to edit">font_download</mat-icon>
+			</button>
+		</div>
+	</h3>
+	
+	<div class="divTask">
+		<app-task *ngFor="let task of list.tasks" [task]="task" [list]="list" (editTask)="handleEdit(task)"
+			cdkDrag></app-task>
+	</div>
+</div>

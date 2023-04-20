@@ -1,0 +1,56 @@
+.header {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  
+  .mat-toolbar {
+    height: 4.5vh;
+  }
+
+  .toolbar {
+    display: flex;
+    background-color: rgba(128, 168, 255, 0.753);
+
+    &__spacer {
+      flex: 1 1 auto;
+    }
+
+    &__menu {
+      margin: 0 auto;
+      list-style: none;
+
+      ul {
+        display: flex;
+        list-style: none;
+        margin-left: -4%;
+
+        li {
+          margin-right: 2%;
+        }
+      }
+
+      &__icon {
+        border: 0;
+        background-color: transparent;
+        color: rgb(63, 63, 63);
+        vertical-align: middle;
+      }
+
+      .toolbar__menu__icon {
+        margin-right: -6%;
+      }
+
+      &__text {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        vertical-align: middle;
+
+        &.active {
+          text-decoration: wavy;
+        }
+      }
+    }
+  }
+}

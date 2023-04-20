@@ -1,0 +1,33 @@
+<div>
+    <form [formGroup]="access" class="form" (ngSubmit)="login(access.value)" novalidate>
+        <header class="form__header">
+            <h1 class="form__header__title"> Login</h1>
+        </header>
+
+        <section class="form__fields">
+            <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error>
+                    El email es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </section>
+
+        <section class="form__fields">
+            <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error>
+                    La Contraseña es <strong>requerida</strong>
+                </mat-error>
+            </mat-form-field>
+        </section>
+
+        <section class="form__fields">
+            <button class="form__fields__button" mat-raised-button color="primary" [disabled]="!access.valid">Acceder
+                <mat-icon>account_box</mat-icon>
+            </button>
+        </section>
+    </form>
+</div>

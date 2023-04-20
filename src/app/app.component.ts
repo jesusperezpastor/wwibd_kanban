@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'kanban';
+
+export class AppComponent  {
+  title = 'WWIBD';
+  showHeader: boolean | undefined;
 }

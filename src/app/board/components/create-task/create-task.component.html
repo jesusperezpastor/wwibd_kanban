@@ -1,0 +1,101 @@
+<div>
+  <form class="form" [formGroup]="createTask" (ngSubmit)="onFormAdd(createTask.value)" novalidate>
+
+    <header class="form__header">
+      <h2 class="form__header__title"><mat-icon>queue</mat-icon> {{ formText }}</h2>
+      <button class="form__header__close-button" mat-raised-button color="warn" (click)="close()">
+        <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
+      </button>
+    </header>
+
+    <div style="display: flex; flex-direction: row;">
+      <div style="flex: 60%;">
+        <section class="form__fields">
+          <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+            <mat-label>Nombre de la Tarea</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>
+              El Nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </section>
+        <section class="form__fields">
+          <mat-form-field class="form__fields__item" appearance="fill">
+            <mat-label>Seleccione un tipo</mat-label>
+            <select class="custom-select" matNativeControl [(ngModel)]="selectedType" name="type"
+              formControlName="type">
+              <option class="custom-option" *ngFor="let type of types" [value]="type.value">
+                {{type.viewValue}}
+              </option>
+            </select>
+            <mat-error>
+              El Tipo de Tarea es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </section>
+        <section class="form__fields">
+          <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+            <mat-label>Persona asignada</mat-label>
+            <input matInput formControlName="assignedTo">
+            <mat-error>
+              La Asignación es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </section>
+        <section class="form__fields">
+          <mat-form-field class="form__fields__item" appearance="fill">
+            <mat-label>Seleccione una prioridad</mat-label>
+            <select class="custom-select" matNativeControl [(ngModel)]="selectedPriority" name="priority"
+              formControlName="priority">
+              <option mat-option *ngFor="let priority of priorities" [value]="priority.value">
+                {{priority.viewValue}}
+              </option>
+            </select>
+            <mat-error>
+              Prioridad es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </section>
+        <section class="form__fields">
+          <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+            <mat-label>Descripción</mat-label>
+            <textarea class="myTextarea" matInput formControlName="description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+        </textarea>
+            <mat-error>
+              Descripcion es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </section>
+        <section class="form__fields">
+          <button class="form__fields__button" mat-raised-button color="primary" [disabled]="!createTask.valid">
+            {{formText}}
+            <mat-icon aria-hidden="false" aria-label="close icon">playlist_add_check</mat-icon>
+          </button>
+        </section>
+      </div>
+
+      <div class="divInfo" style="flex: 40%;">
+        <h3><b>Datos de la Tarea</b></h3>
+        <section class="form__fields__info">
+          <mat-form-field class="form__fields__item__info" appearance="fill" color="primary">
+            <mat-label>Fecha de Creación de la Tarea:</mat-label>
+            <input matInput formControlName="dateCreation" readonly>
+          </mat-form-field>
+        </section>
+        <section class="form__fields__info">
+          <mat-form-field class="form__fields__item__info" appearance="fill" color="primary">
+            <mat-label>Fecha de Comienzo de la Tarea:</mat-label>
+            <input matInput formControlName="dateStart" readonly>
+          </mat-form-field>
+        </section>
+        <section class="form__fields__info">
+          <mat-form-field class="form__fields__item__info" appearance="fill">
+            <mat-label>Fecha de Finalización de la Tarea:</mat-label>
+            <input matInput formControlName="dateEnd" readonly>
+          </mat-form-field>
+        </section>
+      </div>
+    </div>
+  </form>
+</div>

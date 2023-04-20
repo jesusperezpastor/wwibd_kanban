@@ -1,0 +1,22 @@
+<div class="form" #templatePortalContent>
+    <header class="__header">
+        <h2>¿Desea eliminar la lista <b><i> {{ formText }} </i></b>definitivamente?</h2>
+    </header>
+
+    <section class="form__fields">
+        <mat-dialog-actions>
+            <button (click)="closeDialogWithNoAction()" mat-raised-button color="warn">Cancelar
+                <mat-icon aria-hidden="false" aria-label="close icon">clear</mat-icon>
+            </button>
+            <button class="__buttonSuccess" (click)="closeDialogWithAction()" mat-raised-button
+                color="primary">Confirmar
+                <mat-icon aria-hidden="false" aria-label="close icon">delete_outline</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </section>
+
+    <mat-dialog-content>
+        <ng-container *cdkPortalOutlet></ng-container>
+    </mat-dialog-content>
+
+</div>

@@ -1,0 +1,57 @@
+.task {
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0.1em 0.1em 0.5em lightgrey;
+	color: #333;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 5px 0 5px 0;
+	padding: 8px 6px 6px 8px;
+
+	&--urgent {
+		border-left: 9px solid rgb(224, 100, 86);
+	}
+
+	&--moderate {
+		border-left: 9px solid rgb(59, 112, 182);
+	}
+
+	&--low {
+		border-left: 9px solid rgb(116, 201, 67);
+	}
+
+	&__title {
+		flex: 1 1 45%;
+		font-weight: bold;
+		transform: translateX(-25%);
+	}
+
+	&__icon {
+		flex: 1 1 20%;
+		text-align: left;
+	}
+
+	&__date,
+	&__description {
+		flex: 1 1 100%;
+	}
+
+	button {
+		transform: translateY(-20%);
+		margin-right: -3%;
+	}
+
+	.__delete {
+		color: rgb(190, 98, 98);
+	}
+
+	p {
+		margin-bottom: 7px;
+	}
+}
+
+.task:hover {
+	background-color: rgb(235, 235, 235);
+	transition: background-color 250ms linear;
+	cursor: pointer;
+}

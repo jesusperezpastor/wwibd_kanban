@@ -1,0 +1,26 @@
+<header class="header">
+  <mat-toolbar color="primary" class="toolbar">
+    <span style="color:black">When Will it be Done</span>
+    <span class="toolbar__spacer"></span>
+    <nav class="toolbar__menu">
+      <ul>
+        <li>
+          <button mat-icon-button class="toolbar__menu__icon" aria-label="Board option">
+            <mat-icon>work</mat-icon>
+          </button>
+          <a href="#" routerLink="/project" routerLinkActive="active" class="toolbar__menu__text"><span>
+              Proyectos</span>
+          </a>
+        </li>
+
+        <li>
+          <button mat-icon-button class="toolbar__menu__icon" aria-label="Board option">
+            <mat-icon>logout</mat-icon>
+          </button>
+          <a href="#" (click)="logOut()" class="toolbar__menu__text"><span>Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mat-toolbar>
+</header>

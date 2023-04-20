@@ -1,0 +1,29 @@
+<div class="board" id="task_{{board._id}}">
+    <table>
+        <thead class="table-header" (click)="onClick(board._id)">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha de Creación</th>
+                <th>Creado por</th>
+                <th>Número de Tareas</th>
+                <th>Eliminar Proyecto</th>
+            </tr>
+        </thead>
+        <tbody class="table-header">
+            <tr>
+                <td (click)="onClick(board._id)">{{board.name}}</td>
+                <td (click)="onClick(board._id)">{{board.description}}</td>
+                <td (click)="onClick(board._id)">{{board.dateCreation}}</td>
+                <td (click)="onClick(board._id)">{{board.createdBy}}</td>
+                <td (click)="onClick(board._id)">{{countTasks}}</td>
+                <td>
+                    <button class="deleteProjectButton" matTooltip="Eliminar Proyecto" matTooltipPosition="above"
+                        mat-icon-button (click)="removeBoard(board._id)">
+                        <mat-icon aria-label="icon-button to remove">delete_forever</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

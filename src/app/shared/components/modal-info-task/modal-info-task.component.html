@@ -1,0 +1,49 @@
+<div class="form" #templatePortalContent>
+    <header class="header">
+        <h2><mat-icon>info</mat-icon> Información de la tarea</h2>
+    </header>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ task.name }}</td>
+        </tr>
+        <tr>
+            <th>Asignado a</th>
+            <td>{{ task.assignedTo }}</td>
+        </tr>
+        <tr>
+            <th>Tipo</th>
+            <td>{{ task.type }}</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>{{ task.description }}</td>
+        </tr>
+        <tr>
+            <th>Prioridad</th>
+            <td>{{ task.priority }}</td>
+        </tr>
+        <tr>
+            <th>Fecha de Creación</th>
+            <td>{{ task.dateCreation }}</td>
+        </tr>
+        <tr>
+            <th>Fecha de Inicio</th>
+            <td>{{ startTime }}</td>
+        </tr>
+        <tr>
+            <th>Fecha de Finalización</th>
+            <td>{{ endTime }}</td>
+        </tr>
+        <tr>
+            <th>Tiempo de Ciclo</th>
+            <td>{{ task.cycleTime }}</td>
+        </tr>
+    </table>
+
+
+    <mat-dialog-content>
+        <ng-container *cdkPortalOutlet></ng-container>
+    </mat-dialog-content>
+</div>

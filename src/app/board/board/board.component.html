@@ -1,0 +1,122 @@
+<mat-tab-group [selectedIndex]="0">
+  <mat-tab label="Configuración del Tablero">
+    <div class="config">
+      <h1>Configuración del Proyecto <i>{{name}}</i></h1>
+      <div class="divConfigInfo">
+        <p>
+          <b>Proyecto creado por:</b> {{createdBy}}
+        </p>
+        <p>
+          <b>Fecha de creación del proyecto:</b> {{dateCreation}}
+        </p>
+      </div>
+
+      <div class="divTimes" style="display: flex; flex-direction: row;">
+        <mat-form-field class="item" appearance="fill">
+          <mat-label>Comienzo de tiempo cíclico</mat-label>
+          <select class="customSelect" matNativeControl name="type" [(ngModel)]="selectedCycleTimeStart">
+            <option class="custom-option" *ngFor="let list of dropdownListCycleTimeStart" [ngValue]="list.value">
+              {{list.name}}
+            </option>
+          </select>
+        </mat-form-field>
+        <mat-form-field class="item" appearance="fill">
+          <mat-label>Fin de tiempo cíclico</mat-label>
+          <select class="customSelect" matNativeControl name="type" [(ngModel)]="selectedCycleTimeEnd">
+            <option class="custom-option" *ngFor="let list of dropdownListCycleTimeEnd" [ngValue]="list.value">
+              {{list.name}}
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="divUsers">
+      <h2>Listado de usuarios del proyecto</h2>
+      <mat-form-field class="item" appearance="fill" color="primary">
+        <mat-label>Seleccione los miembros del proyecto a añadir</mat-label>
+        <mat-select #selectUser (selectionChange)="addUser($event.value); selectUser.value = ''">
+          <mat-option value="" disabled selected>Seleccione un usuario</mat-option>
+          <mat-option *ngFor="let user of usersPlatforms" [value]="user">
+            {{ user }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h3>Usuarios seleccionados:</h3>
+      <ul>
+        <li class="userIndividual" *ngFor="let user of usersProject">
+          {{ user }}
+          <button class="form__fields__button__delete" mat-raised-button color="warn" type="button"
+            (click)="removeUser(user)">Eliminar</button>
+        </li>
+      </ul>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Tablero Kanban">
+    <main class="board" cdkDropListGroup>
+      <div class="boardButtonsConfig">
+        <button class="board__add" cdkOverlayOrigin (click)="displayOverlay()" #trigger="cdkOverlayOrigin"
+          mat-raised-button color="primary">
+          Añadir Tarea
+          <mat-icon>format_line_spacing</mat-icon>
+        </button>
+        <button class="board__add_list" cdkOverlayOrigin (click)="displayOverlayAddList()"
+          #triggerList="cdkOverlayOrigin" mat-raised-button color="primary">
+          Añadir Columna
+          <mat-icon>wrap_text</mat-icon>
+        </button>
+        <button class="board__save" cdkOverlayOrigin (click)="saveBoard()" #triggerList="cdkOverlayOrigin"
+          mat-raised-button color="primary">
+          Guardar Board
+          <mat-icon>save_alt</mat-icon>
+        </button>
+      </div>
+
+      <section class="board__list">
+        <app-list *ngFor="let list of lists" [list]="list" (editTask)="displayOverlay($event)"
+          (editList)="displayOverlayAddList($event)"></app-list>
+      </section>
+
+      <ng-template #templateCreateTask #connectedOverlayTask="cdkConnectedOverlay" cdkConnectedOverlay
+        [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayDisplayed"
+        [cdkConnectedOverlayHasBackdrop]="overlayOptions.hasBackdrop" (backdropClick)="hideOverlay()"
+        (detach)="hideOverlay()">
+
+        <app-create-task [connectedOverlay]="connectedOverlayTask" [task]="task" [listId]="listId"></app-create-task>
+      </ng-template>
+
+      <ng-template #templateCreateList #connectedOverlayList="cdkConnectedOverlay" cdkConnectedOverlay
+        [cdkConnectedOverlayOrigin]="triggerList" [cdkConnectedOverlayOpen]="isOverlayListDisplayed"
+        [cdkConnectedOverlayHasBackdrop]="overlayOptions.hasBackdrop" (backdropClick)="hideOverlayList()"
+        (detach)="hideOverlayList()">
+
+        <app-create-list [connectedOverlay]="connectedOverlayList" [list]="list" [listId]="listId"></app-create-list>
+      </ng-template>
+    </main>
+  </mat-tab>
+
+  <mat-tab label="Gráfico de Tiempo de Ciclo">
+    <div class="canvas">
+      <h1>Plotted Chart de <i>{{name}}</i></h1>
+      <select #percentileSelect class="custom-select-percentile" (change)="calculatePercentile(percentileSelect.value)">
+        <option class="custom-option-percentile" value="default" selected>Selecciona un percentil</option>
+        <option class="custom-option-percentile" value="90">Percentil 90</option>
+        <option class="custom-option-percentile" value="75">Percentil 75</option>
+        <option class="custom-option-percentile" value="50">Percentil 50</option>
+      </select>
+
+      <button cdkOverlayOrigin (click)="eliminarPercentiles()" #trigger="cdkOverlayOrigin" mat-raised-button
+        color="warn">
+        Eliminar Percentiles
+        <mat-icon>autorenew</mat-icon>
+      </button>
+
+
+      <canvas #myCanvas>{{ chart }}</canvas>
+
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

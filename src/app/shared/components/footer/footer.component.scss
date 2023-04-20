@@ -1,0 +1,22 @@
+.footer {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+  .mat-toolbar {
+    height: 4.5vh;
+  }
+  
+  .toolbar {
+    background-color: rgba(128, 168, 255, 0.753);
+
+    &__text {
+      margin-top: 10px;
+      font-size: 0.88em;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}

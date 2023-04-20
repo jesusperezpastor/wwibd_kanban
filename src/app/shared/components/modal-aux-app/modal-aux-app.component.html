@@ -1,0 +1,21 @@
+<div class="form" #templatePortalContent>
+    <header class="form__header">
+        <button mat-dialog-close mat-raised-button color="warn" matTooltip="Cerrar Ventana"
+            matTooltipClass="custom-tooltip-blue" matTooltipPosition="above">
+            <mat-icon aria-hidden="false" aria-label="close icon">clear</mat-icon>
+        </button>
+    </header>
+
+    <section class="form__fields">
+        <p class="mainText"><mat-icon aria-hidden="false" aria-label="close icon">error_outline</mat-icon> {{ text }}</p>
+    </section>
+
+    <section class="form__fields">
+        <p class="textLittle">{{ textLittle }}</p>
+    </section>
+
+    <mat-dialog-content>
+        <ng-container *cdkPortalOutlet></ng-container>
+    </mat-dialog-content>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="main">
+    <div class="header">
+        <h1>Listado de Proyectos</h1>
+    </div>
+
+    <div class="createProject">
+        <button class="addBoardButton" cdkOverlayOrigin (click)="displayOverlay()" #trigger="cdkOverlayOrigin"
+            mat-raised-button color="primary">
+            Añadir un nuevo Proyecto
+            <mat-icon>assignment</mat-icon>
+        </button>
+    </div>
+
+    <div class="listProjects">
+        <h3 *ngIf="projects.length === 0"><b>Todavía no hay ningún proyecto disponible...</b></h3>
+        <h3 *ngIf="projects.length > 0"><b>Seleccione un proyecto...</b></h3>
+        <app-individual-project *ngFor="let board of projects" [board]="board"></app-individual-project>
+    </div>
+</div>
+
+<ng-template #templateCreateProject #connectedOverlayTask="cdkConnectedOverlay" cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOverlayDisplayed"
+    [cdkConnectedOverlayHasBackdrop]="overlayOptions.hasBackdrop" (backdropClick)="hideOverlay()"
+    (detach)="hideOverlay()">
+
+    <app-create-project [connectedOverlay]="connectedOverlayTask"></app-create-project>
+</ng-template>

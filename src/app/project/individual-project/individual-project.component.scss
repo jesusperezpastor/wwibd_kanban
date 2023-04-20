@@ -1,0 +1,35 @@
+.board {
+    padding-top: 1.75vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+}
+
+table {
+    border-collapse: collapse;
+    border: 0;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    transition: background-color 0.4s linear;
+}
+
+table:hover {
+    background-color: rgb(173, 173, 173);
+    cursor: pointer;
+}
+
+th,
+td {
+    padding: 6px;
+    text-align: center;
+    width: 200px;
+
+    .deleteProjectButton {
+        margin-top: -1vh;
+        color: rgb(190, 98, 98);
+    }
+}
+
+th {
+    font-weight: bold;
+}

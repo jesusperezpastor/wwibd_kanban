@@ -1,0 +1,36 @@
+app-header {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+app-footer {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.main {
+    padding-top: 6vh;
+
+    .header {
+        text-align: center;
+
+        h1 {
+            font-size: 3vh;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    }
+
+    .createProject {
+        margin: 2vh;
+    }
+
+    .listProjects {
+        h3 {
+            padding-top: 1vh;
+            padding-left: 2vh;
+            margin-bottom: -1vh;
+        }
+    }
+}

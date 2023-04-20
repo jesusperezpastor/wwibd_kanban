@@ -1,0 +1,24 @@
+<div>
+    <form class="form" [formGroup]="createList" novalidate (ngSubmit)="onFormAdd(createList.value)">
+        <header class="form__header">
+            <h2 class="form__header__title"><mat-icon>queue</mat-icon> {{ formText }}</h2>
+            <button class="form__header__close-button" mat-raised-button color="warn" (click)="close()">
+                <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
+            </button>
+        </header>
+        <section class="form__fields">
+
+            <mat-form-field class="form__fields__item" appearance="fill" color="primary">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name">
+                <mat-error>
+                    El nombre es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <button class="form__fields__button" mat-raised-button color="primary" [disabled]="!createList.valid">{{
+                formButtonText }} <mat-icon aria-hidden="false"
+                    aria-label="close icon">playlist_add_check</mat-icon></button>
+        </section>
+    </form>
+</div>

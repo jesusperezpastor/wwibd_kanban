@@ -1,0 +1,67 @@
+.list {
+  background-color: #f5f5f5ad;
+  border-radius: 10px;
+  box-shadow: 0.1em 0.1em 0.5em rgb(199, 198, 198);
+  width: 32vh;
+  min-height: 75vh;
+  padding: 1vh;
+  margin: 0.5vh;
+
+  .changeListDiv {
+    transform: translateY(-1vh);
+    margin-left: -1vh;
+    height: 3vh;
+
+    .buttonMoveListLeft,
+    .buttonMoveListRight {
+      color: rgb(115, 115, 115);
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+
+      mat-icon {
+        font-size: 100%;
+      }
+    }
+
+    .buttonDeleteList {
+      float: right;
+      color: rgb(115, 115, 115);
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+
+      mat-icon {
+        font-size: 105%;
+      }
+    }
+  }
+
+  .titleDiv {
+    transform: translateY(-0.25vh);
+
+    .titleDivContainer {
+      display: flex;
+      align-items: center;
+
+      .buttonEditList {
+        transform: translateY(-0.1vh);
+        color: rgb(115, 115, 115);
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+
+        mat-icon {
+          font-size: 100%;
+        }
+      }
+    }
+  }
+
+  .divTask {
+    transform: translateY(-0.5vh);
+  }
+
+
+
+}

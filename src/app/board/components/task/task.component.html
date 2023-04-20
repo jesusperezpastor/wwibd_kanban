@@ -1,0 +1,34 @@
+<div class="task" id="task_{{task.id}}"
+  [ngClass]="{'task--urgent': task.priority === 'urgent', 'task--moderate': task.priority === 'moderate', 'task--low': task.priority === 'low'}">
+
+  <div class="task__icon">
+    <mat-icon aria-hidden="false" aria-label="urgent icon"
+      *ngIf="task.type === 'Historia de Usuario'">bookmark_border</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.type === 'Tarea Técnica'">build</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.type === 'Característica'">description</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.type === 'Bug'">bug_report</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon"
+      *ngIf="task.type === 'Requisito no Funcional'">compare_arrows</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.type === 'Mejora'">autorenew</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="medium icon"
+      *ngIf="task.type === 'Documentación'">chrome_reader_mode</mat-icon>
+  </div>
+
+  <h3 class="task__title">{{ task.type }}</h3>
+
+  <button matTooltip="Editar Tarea" matTooltipClass="custom-tooltip-blue" matTooltipPosition="above" mat-icon-button
+    (click)="handleEditTask(task)">
+    <mat-icon aria-label="icon-button to edit">edit</mat-icon>
+  </button>
+
+  <button class="__delete" matTooltip="Eliminar Tarea" matTooltipPosition="above" mat-icon-button
+    (click)="removeTask(task.id)">
+    <mat-icon aria-label="icon-button to remove">delete</mat-icon>
+  </button>
+
+  <div (click)="infoTask(task)">
+    <p class="task__description"><strong>Nombre:</strong> {{ task.name }}</p>
+    <p class="task__description"><strong>Responsable:</strong> {{ task.assignedTo }}</p>
+    <p class="task__date"><strong>Fecha de Creación:</strong> {{ task.dateCreation }}</p>
+  </div>
+</div>
