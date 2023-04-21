@@ -3,6 +3,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t',
            'us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/wwibd-kanban-image',
+           '--build-arg', 'PORT=8080', # Especificar la variable PORT aquí
            '.']
 
   # Docker Push
