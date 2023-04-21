@@ -2,7 +2,7 @@
 FROM node:18
 
 # Expose the port that the app will listen on
-EXPOSE 8080
+EXPOSE 4200
 
 # Set the working directory to /app
 WORKDIR /app
