@@ -1,6 +1,6 @@
 {
     "/api/*":{
-        "target":"http://localhost:3000",
+        "target":"https://wwibd-server-api-image-7qbwpnju7a-uc.a.run.app",
         "secure": false,
         "logLevel": "debug"
     }
